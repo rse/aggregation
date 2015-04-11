@@ -34,8 +34,8 @@ var aggregation = (base, ...mixins) => {
 
             /*  call mixin's initializer  */
             mixins.forEach((mixin) => {
-                if (typeof mixin.initializer === "function")
-                    mixin.initializer.call(this)
+                if (typeof mixin.prototype.initializer === "function")
+                    mixin.prototype.initializer.call(this)
             })
         }
     };
@@ -45,7 +45,7 @@ var aggregation = (base, ...mixins) => {
         Object.getOwnPropertyNames(source)
             .concat(Object.getOwnPropertySymbols(source))
             .forEach((prop) => {
-            if (prop.match(/^(?:constructor|prototype|arguments|caller|name|bind|call|apply|toString|length)$/))
+            if (prop.match(/^(?:initializer|constructor|prototype|arguments|caller|name|bind|call|apply|toString|length)$/))
                 return
             Object.defineProperty(target, prop, Object.getOwnPropertyDescriptor(source, prop))
         })
