@@ -2,7 +2,7 @@
 Aggregation
 ===========
 
-Class &amp; Mixin Aggregation Utility Function
+Aggregation of Base Class and Mixin Classes
 
 <p/>
 <img src="https://nodei.co/npm/aggregation.png?downloads=true&stars=true" alt=""/>
@@ -13,101 +13,95 @@ Class &amp; Mixin Aggregation Utility Function
 About
 -----
 
-Aggregation is a very small JavaScript library, providing ...
+Aggregation is a very small JavaScript library for Node.js environments,
+providing just a single function, for use in ECMAScript 5/6 class
+inheritance based on mixins. It aggregates a base class and one or
+more mixin classes into an aggregate class, which then is usually
+subsequently used as the base class for another class.
 
 Installation
 ------------
-
-#### Node environments (with NPM package manager):
 
 ```shell
 $ npm install aggregation
 ```
 
-#### Browser environments (with Bower package manager):
-
-```shell
-$ bower install aggregation
-```
-
 Usage
 -----
 
-### Main Operations
+#### ECMAScript 6
 
-- `new OSet(): OSet`: [O(1)]<br/>
-  Create a new empty set instance.
+```js
+var aggregation = require("aggregation/es6")
 
-- `OSet#length(): Number`: [O(1)]<br/>
-  Get number of items in the set.
+class Colored {
+    initializer ()     { this._color = "white" }
+    get color ()       { return this._color }
+    set color (v)      { this._color = v }
+}
 
-- `OSet#has(key: String): Boolean`: [O(1)]<br/>
-  Check whether item exists under `key`.
+class ZCoord {
+    initializer ()     { this._z = 0 }
+    get z ()           { return this._z }
+    set z (v)          { this._z = v }
+}
 
-- `OSet#get(key: String): Object`: [O(1)]<br/>
-  Get value of item under `key`.
-  If no object exists under `key` the value `undefined` is returned.
+class Shape {
+    constructor (x, y) { this._x = x; this._y = y }
+    get x ()           { return this._x }
+    set x (v)          { this._x = v }
+    get y ()           { return this._y }
+    set y (v)          { this._y = v }
+}
 
-- `OSet#set(key: String, val: Object, toFront?: Boolean): OSet`: [O(1)]<br/>
-  Set value of item under `key`. If there is already an item stored
-  under `key`, replace its value. Else insert as a new item into the set
-  (by default to the end of the list of elements,
-   or, if `toFront` is `true`, to the start of the list of elements).
+class Rectangle extends aggregation(Shape, Colored, ZCoord) {}
 
-- `OSet#del(key: String): OSet`: [O(1)]<br/>
-  Delete item under `key`.
-  If no object exists under `key` an exception is thrown.
+var rect = new Rectangle(7, 42)
+rect.z     = 1000
+rect.color = "red"
+```
 
-### Convenience Operations
+#### ECMAScript 5
 
-- `OSet#clear(): OSet`: [O(n)]<br/>
-  Delete all items under `key`.
+```js
+var aggregation = require("aggregation/es5")
 
-- `OSet#keys(): String[]`: [O(n)]<br/>
-  Get the list of keys of all items in the set, in insertion order.
+var Colored = function () {}
+Colored.prototype = {
+    initializer: function ()  { this._color = "white" },
+    getColor:    function ()  { return this._color },
+    setColor:    function (v) { this._color = v }
+}
 
-- `OSet#values(): Object[]`: [O(n)]<br/>
-  Get the list of values of all items in the set, in insertion order.
+var ZCoord = function () {}
+ZCoord.prototype = {
+    initializer: function ()  { this._z = 0 },
+    getZ:        function ()  { return this._z },
+    setZ:        function (v) { this._z = v }
+}
 
-- `OSet#find(predicate: (val: Object, key: String, order: Number) =&gt; Boolean, ctx: Object): Object[]`: [O(n)]<br/>
-  Iterate over all items in the set, in insertion order, and call
-  the `predicate` function for each object. The function receives the
-  item value, the item key and the iteration order (starting from
-  zero and steadily increasing). If `predicate` returns `true`
-  the item is placed into the result array of items.
+var Shape = function (x, y) {
+    this._x = x
+    this._y = y
+}
+Shape.prototype = {
+    getX: function ()  { return this._x },
+    setX: function (v) { this._x = v },
+    getY: function ()  { return this._y },
+    setY: function (v) { this._y = v }
+}
 
-- `OSet#each(iterator: (val: Object, key: String, order: Number) =&gt; Void, ctx: Object): Object`: [O(n)]<br/>
-  Iterate over all items in the set, in insertion order, and call
-  the `iterator` function for each object. The function receives the
-  item value, the item key and the iteration order (starting from
-  zero and steadily increasing). The function returns the passed `ctx` object.
+var _Combined = aggregation(Shape, Colored, ZCoord)
+var Rectangle = function (x, y) {
+    _Combined.call(this, x, y)
+}
+Rectangle.prototype = Object.create(_Combined.prototype)
+Rectangle.prototype.constructor = Rectangle
 
-- `OSet#merge(other: OSet): OSet`: [O(n)]<br/>
-  Merge all items of `other` into the set.
-  The merged items are removed from `other`.
-
-- `OSet#union(other: OSet): OSet`: [O(n)]<br/>
-  Return a new set created through the union of the target set and the
-  `other` set. Both the target and the `other` set are not modified.
-
-- `OSet#intersection(other: OSet): OSet`: [O(n)]<br/>
-  Return a new set created through the intersection of the target set and the
-  `other` set. Both the target and the `other` set are not modified.
-
-- `OSet#difference(other: OSet): OSet`: [O(n)]<br/>
-  Return a new set created through the difference/complement of the target set and the
-  `other` set. Both the target and the `other` set are not modified.
-
-Implementation Notice
----------------------
-
-Although OSet is written in ECMAScript 6, it is transpiled to ECMAScript
-5 and this way runs in really all(!) current (as of 2015) JavaScript
-environments, of course.
-
-Internally, OSet is based on a managing all objects in a ring of
-double-linked buckets. This way it can achieve the O(1) time complexity
-in all its main operations.
+var rect = new Rectangle(7, 42)
+rect.setZ(1000)
+rect.setColor("red")
+```
 
 License
 -------
