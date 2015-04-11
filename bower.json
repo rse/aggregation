@@ -1,0 +1,18 @@
+{
+    "name":        "aggregation",
+    "version":     "0.9.0",
+    "description": "Aggregation of Base Class and Mixin Classes",
+    "main":        "src/aggregation-es5.js",
+    "homepage":    "https://github.com/rse/aggregation",
+    "license":     "MIT",
+    "authors": [
+        "Ralf S. Engelschall <rse@engelschall.com>"
+    ],
+    "keywords": [ "class", "mixin", "aggregation" ],
+    "dependencies": {
+    },
+    "ignore": [
+        "**/.*",
+        "node_modules"
+    ]
+}
