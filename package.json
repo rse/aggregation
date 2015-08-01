@@ -28,7 +28,7 @@
         "grunt-contrib-jshint": "~0.11.1",
         "grunt-contrib-clean":  "~0.6.0",
         "grunt-exec":           "~0.4.6",
-        "babel":                "~5.0.12",
-        "chai":                 "~2.2.0"
+        "babel":                "~5.8.20",
+        "chai":                 "~3.2.0"
     }
 }
