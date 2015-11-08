@@ -41,7 +41,7 @@ module.exports = function (grunt) {
                 cmd: "node tst/aggregation-es5.js"
             },
             "aggregation-es6": {
-                cmd: "./node_modules/.bin/babel-node tst/aggregation-es6.js"
+                cmd: "./node_modules/.bin/babel-node --presets es2015 tst/aggregation-es6.js"
             }
         },
         clean: {
