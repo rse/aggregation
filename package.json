@@ -1,6 +1,6 @@
 {
     "name":        "aggregation",
-    "version":     "0.9.6",
+    "version":     "0.9.7",
     "description": "Aggregation of Base Class and Mixin Classes",
     "keywords":    [ "class", "mixin", "aggregation" ],
     "main":        "src/aggregation-es5.js",
@@ -17,7 +17,7 @@
     "homepage": "https://github.com/rse/aggregation",
     "bugs":     "https://github.com/rse/aggregation/issues",
     "browserify": {
-        "transform": [ "babelify", { "presets": "es2015" } ]
+        "transform": [ [ "babelify", { "presets": "es2015" } ] ]
     },
     "devDependencies": {
         "grunt":                "~0.4.5",
