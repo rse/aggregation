@@ -1,6 +1,6 @@
 {
     "name":        "aggregation",
-    "version":     "0.9.5",
+    "version":     "0.9.6",
     "description": "Aggregation of Base Class and Mixin Classes",
     "keywords":    [ "class", "mixin", "aggregation" ],
     "main":        "src/aggregation-es5.js",
@@ -17,16 +17,16 @@
     "homepage": "https://github.com/rse/aggregation",
     "bugs":     "https://github.com/rse/aggregation/issues",
     "browserify": {
-        "transform": [ "babelify" ]
+        "transform": [ "babelify", { "presets": "es2015" } ]
     },
     "devDependencies": {
         "grunt":                "~0.4.5",
         "grunt-cli":            "~0.1.13",
         "grunt-contrib-jshint": "~0.11.3",
-        "grunt-contrib-clean":  "~0.6.0",
+        "grunt-contrib-clean":  "~0.7.0",
         "grunt-exec":           "~0.4.6",
-        "babel-cli":            "~6.1.2",
-        "babel-preset-es2015":  "~6.1.2",
+        "babel-cli":            "~6.2.4",
+        "babel-preset-es2015":  "~6.2.4",
         "chai":                 "~3.4.1"
     }
 }
