@@ -20,13 +20,13 @@
         "transform": [ [ "babelify", { "presets": "es2015" } ] ]
     },
     "devDependencies": {
-        "grunt":                "~0.4.5",
-        "grunt-cli":            "~0.1.13",
-        "grunt-contrib-jshint": "~0.11.3",
-        "grunt-contrib-clean":  "~0.7.0",
-        "grunt-exec":           "~0.4.6",
-        "babel-cli":            "~6.3.17",
-        "babel-preset-es2015":  "~6.3.13",
-        "chai":                 "~3.4.1"
+        "grunt":                "~1.0.1",
+        "grunt-cli":            "~1.2.0",
+        "grunt-contrib-jshint": "~1.0.0",
+        "grunt-contrib-clean":  "~1.0.0",
+        "grunt-exec":           "~0.4.7",
+        "babel-cli":            "~6.9.0",
+        "babel-preset-es2015":  "~6.9.0",
+        "chai":                 "~3.5.0"
     }
 }
