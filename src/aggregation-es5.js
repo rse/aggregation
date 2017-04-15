@@ -29,13 +29,15 @@ var aggregation = function (base) {
 
     /*  create aggregation class  */
     var aggregate = function () {
+        var args = Array.prototype.slice.call(arguments, 0)
+
         /*  call base class constructor  */
-        base.apply(this, arguments)
+        base.apply(this, args)
 
         /*  call mixin's initializer  */
         mixins.forEach(function (mixin) {
             if (typeof mixin.prototype.initializer === "function")
-                mixin.prototype.initializer.call(this)
+                mixin.prototype.initializer.apply(this, args)
         }.bind(this))
     }
 
