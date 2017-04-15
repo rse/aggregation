@@ -60,5 +60,5 @@ var aggregation = (base, ...mixins) => {
     return aggregate
 }
 
-export default aggregation
+module.exports = aggregation
 
