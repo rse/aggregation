@@ -27,7 +27,7 @@
 var aggregation = (base, ...mixins) => {
 
     /*  create aggregation class  */
-    let aggregate = class __Aggregate extends base {
+    let aggregate = class extends base {
         constructor (...args) {
             /*  call base class constructor  */
             super(...args)
