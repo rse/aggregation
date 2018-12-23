@@ -1,6 +1,6 @@
 {
     "name":        "aggregation",
-    "version":     "1.2.4",
+    "version":     "1.2.5",
     "description": "Aggregation of Base Class and Mixin Classes",
     "keywords":    [ "class", "mixin", "aggregation" ],
     "main":        "src/aggregation-es5.js",
