@@ -9,11 +9,11 @@
         "url":  "https://github.com/rse/aggregation.git"
     },
     "author": {
-        "name":  "Ralf S. Engelschall",
+        "name":  "Dr. Ralf S. Engelschall",
         "email": "rse@engelschall.com",
         "url":   "http://engelschall.com"
     },
-    "license": "MIT",
+    "license":  "MIT",
     "homepage": "https://github.com/rse/aggregation",
     "bugs":     "https://github.com/rse/aggregation/issues",
     "browserify": {
