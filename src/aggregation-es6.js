@@ -34,8 +34,10 @@ var aggregation = (base, ...mixins) => {
 
             /*  call mixin's initializer  */
             mixins.forEach((mixin) => {
-                if (typeof mixin.prototype.initializer === "function")
-                    mixin.prototype.initializer.apply(this, args)
+                if (typeof mixin.prototype.constructor === 'function')
+                    mixin.prototype.constructor.apply(this, args);
+                else if (typeof mixin.prototype.initializer === "function")
+                    mixin.prototype.initializer.apply(this, args)                
             })
         }
     };
